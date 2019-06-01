@@ -36,31 +36,95 @@ Dans cette première partie, vous allez capturer une connexion WPA Entreprise au
 - Etablir une connexion depuis un poste de travail (PC), un smartphone ou une tablette. Attention, il est important que la connexion se fasse à 2.4 GHz pour pouvoir sniffer avec les interfaces Alfa.
 - Comparer votre capture au processus d’authentification expliqué en classe (n’oubliez pas les captures !). En particulier, identifier les étapes suivantes :
 	- Requête et réponse d’authentification système ouvert
+	
+	![](images/adressage-ouvert.png)
+
  	- Requête et réponse d’association
+ 	
+ 	TODO
+ 	
 	- Sélection de la méthode d’authentification
+	
+	![](images/selection-auth.png)
+	
+	Nous voyons que l'AP propose EAP comme méthode d'authentification.
+	Le client lui repond avec un NAK (Negative AcKnowledgment)	qui signifie que le client ne souhaite pas utiliser cette méthode d'authentification mais qu'il souhaite utiliser PEAP.
+	
+	![](images/nak.png)
+	
 	- Phase d’initiation. Arrivez-vous à voir l’identité du client ?
+	
+	Oui nous arrivons a voir l'identité du client dans la reponse d'authentification à système ouvert.
+	 
+	![](images/client-identity.png)
+	
+	*Note : Nous voyons l'identité d'un de nos camarade car nous avons eu votre autorisation d'utiliser sa capture car quand nous essayions d'effectuer la notre nous obtenions des communications unidirectionnelle (AP vers Client seulement).*
+	
 	- Phase hello :
 		- Version TLS
+		
+			Version 1.2
+		
+			![](images/tls-version.png)
+			
 		- Suites cryptographiques et méthodes de compression proposées par le client et acceptées par l’AP
+		
+			- proposées par le client :
+			
+				![](images/ciphersuites-client.png)
+			
+			- acceptées par l'AP : 
+			
+				![](images/ciphersuites-server.png)
+			
+			*Note : Nous voyons qu'aucune méthode de compression n'est proposée par le client.*
+		
 		- Nonces
+			
+			- client : 
+			
+				![](images/nonce-client.png)
+			
+			- serveur : 
+			
+				![](images/nonce-server.png)
+		
+			*Note : Les nonces sont composées de 28 bytes générés aleatoirement, auxquels sont concaténées 4 bits correspondant au temps  (en secondes) écoulés depuis le 1er janvier 1970.*
+	
 		- Session ID
+		
+			![](images/session-id.png)
+		
+	
 	- Phase de transmission de certificats
+	
 	 	- Certificat serveur
+	 	
+	 		![](images/certif-server.png)
+	 	
 		- Change cipher spec
+		
+			![](images/change-cipher-spec.png)
+		
 	- Authentification interne et transmission de la clé WPA (échange chiffré, vu comme « Application data »)
+	
+	![](images/app-data.png) 
+		
 	- 4-way hadshake
+	
+	![](images/4-way.png) 
 
 ### Répondez aux questions suivantes :
  
 > **_Question :_** Quelle ou quelles méthode(s) d’authentification est/sont proposé(s) au client ?
 > 
-> **_Réponse :_** 
+> **_Réponse :_**  La méthode proposé dans un premier temps est EAP-TLS. Dans un second temps, après le refus du client d'utilisé cette methode, EAP-PEAP lui est proposé (il avait notifié son souhait d'utiliser cette methode). 
 
 ---
 
 > **_Question:_** Quelle méthode d’authentification est utilisée ?
 > 
-> **_Réponse:_** 
+> **_Réponse:_** Au final, c'est EAP-PEAP qui est utilisé.
 
 ---
 
@@ -68,13 +132,12 @@ Dans cette première partie, vous allez capturer une connexion WPA Entreprise au
 > 
 > - Le serveur envoie-t-il un certificat au client ? Pourquoi oui ou non ?
 > 
-> **_Réponse:_**
+> **_Réponse:_** Oui le serveur envoie un certificat au client. Cela permet au client d'authentifier le serveur.
 > 
 > - b.	Le client envoie-t-il un certificat au serveur ? Pourquoi oui ou non ?
 > 
-> **_Réponse:_**
+> **_Réponse:_**   Non aucun certficat n'est envoyé, le client s'authentifie grâce a un challenge MS-CHAPV2  au travers du tunnel TLS.
 > 
-
 ---
 
 ### 2. Attaque WPA Entreprise
