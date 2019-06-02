@@ -40,7 +40,7 @@ Dans cette première partie, vous allez capturer une connexion WPA Entreprise au
 	![](images/adressage-ouvert.png)
 
  	- Requête et réponse d’association
- 	
+
  	TODO
  	
 	- Sélection de la méthode d’authentification
@@ -94,10 +94,11 @@ Dans cette première partie, vous allez capturer une connexion WPA Entreprise au
 		- Session ID
 		
 			![](images/session-id.png)
-		
-	
-	- Phase de transmission de certificats
-	
+
+
+​	
+​	- Phase de transmission de certificats
+​	
 	 	- Certificat serveur
 	 	
 	 		![](images/certif-server.png)
@@ -115,7 +116,7 @@ Dans cette première partie, vous allez capturer une connexion WPA Entreprise au
 	![](images/4-way.png) 
 
 ### Répondez aux questions suivantes :
- 
+
 > **_Question :_** Quelle ou quelles méthode(s) d’authentification est/sont proposé(s) au client ?
 > 
 > **_Réponse :_**  La méthode proposé dans un premier temps est EAP-TLS. Dans un second temps, après le refus du client d'utilisé cette methode, EAP-PEAP lui est proposé (il avait notifié son souhait d'utiliser cette methode). 
@@ -159,20 +160,31 @@ Pour implémenter l’attaque :
 ### Répondez aux questions suivantes :
 
 > **_Question :_** Quelles modifications sont nécessaires dans la configuration de hostapd-wpe pour cette attaque ?
-> 
-> **_Réponse :_** 
+>
+> **_Réponse :_**  On doit modifier l'interface et le SSID et éventuellement le channel.
+>
+> ![](./images/hostapd-wpe-conf.png)
 
 ---
 
 > **_Question:_** Quel type de hash doit-on indiquer à john pour craquer le handshake ?
 > 
-> **_Réponse:_** 
+> **_Réponse:_**  Problème avec la carte WiFI ...
 
 ---
 
 > **_Question:_** 6.	Quelles méthodes d’authentification sont supportées par hostapd-wpe ?
-> 
-> **_Réponse:_**
+>
+> **_Réponse:_** hostapd supporte :
+>
+> 1. EAP-FAST/MSCHAPv2 (Phase 0)
+> 2. PEAP/MSCHAPv2
+> 3. EAP-TTLS/MSCHAPv2
+> 4. EAP-TTLS/MSCHAP
+> 5. EAP-TTLS/CHAP
+> 6. EAP-TTLS/PAP
+>
+> Source : <https://tools.kali.org/wireless-attacks/hostapd-wpe>
 
 
 ## Quelques éléments à considérer :
