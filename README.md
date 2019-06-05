@@ -41,80 +41,80 @@ Dans cette première partie, vous allez capturer une connexion WPA Entreprise au
 
  		TODO
 
-	- Sélection de la méthode d’authentification
-	
-		![](images/selection-auth.png)
-	
-	Nous voyons que l'AP propose EAP comme méthode d'authentification.
-	Le client lui repond avec un NAK (Negative AcKnowledgment)	qui signifie que le client ne souhaite pas utiliser cette méthode d'authentification mais qu'il souhaite utiliser PEAP.
-	
-	![](images/nak.png)
-	
-	- Phase d’initiation. Arrivez-vous à voir l’identité du client ?
-	
-	Oui nous arrivons a voir l'identité du client dans la reponse d'authentification à système ouvert.
-	
-	![](images/client-identity.png)
-	
-	*Note : Nous voyons l'identité d'un de nos camarade car nous avons eu votre autorisation d'utiliser sa capture car quand nous essayions d'effectuer la notre nous obtenions des communications unidirectionnelle (AP vers Client seulement).*
-	
-	- Phase hello :
-		- Version TLS
-		
-			Version 1.2
-		
-			![](images/tls-version.png)
-			
-		- Suites cryptographiques et méthodes de compression proposées par le client et acceptées par l’AP
-		
-			- proposées par le client :
-			
-				![](images/ciphersuites-client.png)
-			
-			- acceptées par l'AP : 
-			
-				![](images/ciphersuites-server.png)
-			
-			*Note : Nous voyons qu'aucune méthode de compression n'est proposée par le client.*
-		
-		- Nonces
-			
-			- client : 
-			
-				![](images/nonce-client.png)
-			
-			- serveur : 
-			
-				![](images/nonce-server.png)
-		
-			*Note : Les nonces sont composées de 28 bytes générés aleatoirement, auxquels sont concaténées 4 bits correspondant au temps  (en secondes) écoulés depuis le 1er janvier 1970.*
-	
-		- Session ID
-		
-			![](images/session-id.png)
-			
-	- Phase de transmission de certificats
-		
-		- Certificat serveur
-	 	
-			![](images/certif-server.png)
+- Sélection de la méthode d’authentification
 
+	![](images/selection-auth.png)
 
-		- Change cipher spec
+Nous voyons que l'AP propose EAP comme méthode d'authentification.
+Le client lui repond avec un NAK (Negative AcKnowledgment)	qui signifie que le client ne souhaite pas utiliser cette méthode d'authentification mais qu'il souhaite utiliser PEAP.
+
+![](images/nak.png)
+
+- Phase d’initiation. Arrivez-vous à voir l’identité du client ?
+
+Oui nous arrivons a voir l'identité du client dans la reponse d'authentification à système ouvert.
+
+![](images/client-identity.png)
+
+*Note : Nous voyons l'identité d'un de nos camarade car nous avons eu votre autorisation d'utiliser sa capture car quand nous essayions d'effectuer la notre nous obtenions des communications unidirectionnelle (AP vers Client seulement).*
+
+- Phase hello :
+	- Version TLS
+	
+		Version 1.2
+	
+		![](images/tls-version.png)
 		
-			![](images/change-cipher-spec.png)
+	- Suites cryptographiques et méthodes de compression proposées par le client et acceptées par l’AP
+	
+		- proposées par le client :
+		
+			![](images/ciphersuites-client.png)
+		
+		- acceptées par l'AP : 
+		
+			![](images/ciphersuites-server.png)
+		
+		*Note : Nous voyons qu'aucune méthode de compression n'est proposée par le client.*
+	
+	- Nonces
+		
+		- client : 
+		
+			![](images/nonce-client.png)
+		
+		- serveur : 
+		
+			![](images/nonce-server.png)
+	
+		*Note : Les nonces sont composées de 28 bytes générés aleatoirement, auxquels sont concaténées 4 bits correspondant au temps  (en secondes) écoulés depuis le 1er janvier 1970.*
+
+	- Session ID
+	
+		![](images/session-id.png)
+	
+- Phase de transmission de certificats
+	
+	- Certificat serveur
+		 	
+		![](images/certif-server.png)
+
+- Change cipher spec
+
+![](images/change-cipher-spec.png)
+		
+
+- Authentification interne et transmission de la clé WPA (échange chiffré, vu comme « Application data »)
+	
+
+![](images/app-data.png)
 
 
 ​		
-		- Authentification interne et transmission de la clé WPA (échange chiffré, vu comme « Application data »)
-	
-			![](images/app-data.png)
-
-
+​		- 4-way hadshake
 ​		
-		- 4-way hadshake
-		
-			![](images/4-way.png) 
+
+![](images/4-way.png) 
 
 
 ### Répondez aux questions suivantes :
@@ -171,7 +171,7 @@ Pour implémenter l’attaque :
 
 > **_Question:_** Quel type de hash doit-on indiquer à john pour craquer le handshake ?
 >
-> **_Réponse:_**  ![](images/hostapd-error.PNG)
+> **_Réponse:_**  ![](images/hostapd-error.png)
 >
 > A cette partie nous avons eu un problème avec nos laptops et les différentes cartes WiFi (essai avec plusieurs et vu avec M. Rubinstein), en effet, à chaque essai nous avions des erreurs impossibles à régler.
 
