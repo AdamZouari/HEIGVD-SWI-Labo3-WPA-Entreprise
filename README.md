@@ -20,8 +20,7 @@ __A faire en équipes de deux personnes__
 __Il est fortement conseillé d'employer une distribution Kali__ (on ne pourra pas assurer le support avec d'autres distributions). __Si vous utilisez une VM, il vous faudra une interface WiFi usb, disponible sur demande__.
 
 __ATTENTION :__ Il est __particulièrement important pour ce laboratoire__ de bien fixer le canal lors de vos captures et vos injections. Si vous en avez besoin, la méthode la plus sure est de lancer un terminal séparé, et d'ouvrir airodump-ng avec l'option :
-
-```--channel```
+`--channel`
 
 Il faudra __garder la fenêtre d'airodump ouverte__ en permanence pendant que vos scripts tournent ou vos manipulations sont effectuées.
 
@@ -36,26 +35,25 @@ Dans cette première partie, vous allez capturer une connexion WPA Entreprise au
 - Etablir une connexion depuis un poste de travail (PC), un smartphone ou une tablette. Attention, il est important que la connexion se fasse à 2.4 GHz pour pouvoir sniffer avec les interfaces Alfa.
 - Comparer votre capture au processus d’authentification expliqué en classe (n’oubliez pas les captures !). En particulier, identifier les étapes suivantes :
 	- Requête et réponse d’authentification système ouvert
-	
 	![](images/adressage-ouvert.png)
 
  	- Requête et réponse d’association
 
- 	TODO
- 	
+ 		TODO
+
 	- Sélection de la méthode d’authentification
-	
-	![](images/selection-auth.png)
-	
+
+		![](images/selection-auth.png)
+
 	Nous voyons que l'AP propose EAP comme méthode d'authentification.
 	Le client lui repond avec un NAK (Negative AcKnowledgment)	qui signifie que le client ne souhaite pas utiliser cette méthode d'authentification mais qu'il souhaite utiliser PEAP.
-	
+
 	![](images/nak.png)
-	
+
 	- Phase d’initiation. Arrivez-vous à voir l’identité du client ?
-	
+
 	Oui nous arrivons a voir l'identité du client dans la reponse d'authentification à système ouvert.
-	 
+	
 	![](images/client-identity.png)
 	
 	*Note : Nous voyons l'identité d'un de nos camarade car nous avons eu votre autorisation d'utiliser sa capture car quand nous essayions d'effectuer la notre nous obtenions des communications unidirectionnelle (AP vers Client seulement).*
@@ -94,26 +92,22 @@ Dans cette première partie, vous allez capturer une connexion WPA Entreprise au
 		- Session ID
 		
 			![](images/session-id.png)
-
-
-​	
-​	- Phase de transmission de certificats
-​	
-	 	- Certificat serveur
+			
+	- Phase de transmission de certificats
+		- Certificat serveur
 	 	
-	 		![](images/certif-server.png)
-	 	
+![](images/certif-server.png)
+
 		- Change cipher spec
 		
-			![](images/change-cipher-spec.png)
+![](images/change-cipher-spec.png)
 		
-	- Authentification interne et transmission de la clé WPA (échange chiffré, vu comme « Application data »)
+			- Authentification interne et transmission de la clé WPA (échange chiffré, vu comme « Application data »)
 	
-		![](images/app-data.png) 
+![](images/app-data.png)
 		
-	- 4-way hadshake
-	
-		![](images/4-way.png) 
+			- 4-way hadshake
+![](images/4-way.png) 
 
 ### Répondez aux questions suivantes :
 
