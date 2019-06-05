@@ -94,20 +94,26 @@ Dans cette première partie, vous allez capturer une connexion WPA Entreprise au
 			![](images/session-id.png)
 			
 	- Phase de transmission de certificats
+		
 		- Certificat serveur
 	 	
-![](images/certif-server.png)
+			![](images/certif-server.png)
+
 
 		- Change cipher spec
 		
-![](images/change-cipher-spec.png)
+			![](images/change-cipher-spec.png)
 		
-			- Authentification interne et transmission de la clé WPA (échange chiffré, vu comme « Application data »)
+		
+		- Authentification interne et transmission de la clé WPA (échange chiffré, vu comme « Application data »)
 	
-![](images/app-data.png)
+			![](images/app-data.png)
 		
-			- 4-way hadshake
-![](images/4-way.png) 
+		
+		- 4-way hadshake
+		
+			![](images/4-way.png) 
+			
 
 ### Répondez aux questions suivantes :
 
