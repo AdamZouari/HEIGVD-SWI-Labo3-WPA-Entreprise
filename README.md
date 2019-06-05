@@ -108,11 +108,11 @@ Dans cette première partie, vous allez capturer une connexion WPA Entreprise au
 		
 	- Authentification interne et transmission de la clé WPA (échange chiffré, vu comme « Application data »)
 	
-	![](images/app-data.png) 
+		![](images/app-data.png) 
 		
 	- 4-way hadshake
 	
-	![](images/4-way.png) 
+		![](images/4-way.png) 
 
 ### Répondez aux questions suivantes :
  
